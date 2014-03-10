@@ -13,8 +13,6 @@
 <body>
    <div ng-controller="bookly.BooksController" class="container">
 
-    <!-- dropdown -->
-
     <h4>Search: <input ng-model="query"> </h4>
 
     <select ng-model="orderProp"> 
@@ -39,7 +37,7 @@
 
           <div class="cart-button">
             <span class="price">{{book.price | currency}}
-             <button ng-click="addToCart($book, $cart)"> Add </button>
+             <button ng-click="addToCart($book)"> Add </button>
           </div>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
@@ -49,14 +47,14 @@
             <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Price</th>
           </tr>
           <tr>
-            <td colspan=3>($title, $author, $price)</td>
+            <td "$title"</td><td "$book"</td><td "$price"</td>
           </tr>
           <tr class="cart-total">
             <td colspan=2 width='80%'>Total</td><td width='20%'>[[total]]</td>
           </tr>
           </table>
           <div class="btn-group cart-button">
-            [[Empty cart button]]
+            <button ng-click="removeBook($book)"> Remove </button>
             <button onclick="alert('Dunno how to check out ...');">Check Out</button>
           </div>
         </div>
