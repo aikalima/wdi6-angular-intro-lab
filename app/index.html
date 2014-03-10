@@ -33,17 +33,19 @@
 
           <div class="cart-button">
             <span class="price">{{book.price | currency}}
-             [[Add]] <!-- Add to cart button  -->
+             <button ng-click="add($index)">Add to cart</button> <!-- Add to cart button  -->
           </div>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
-          <h3>your cart has [[item count]] items. </h3>
-          <table class="carttable">
+          <h3>your cart has {{ cartItems.length }} items </h3>
+          <table class="carttable" ng-model="cartItems">
           <tr>
             <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Price</th>
           </tr>
-          <tr>
-            <td colspan=3>[[a row for each cart item]]</td>
+          <tr ng-repeat="cartItem in cartItems">
+            <td colspan=1>{{cartItem.title}}</td>
+            <td colspan=1>{{cartItem.author}}</td>
+            <td colspan=1>{{cartItem.price}}</td>
           </tr>
           <tr class="cart-total">
             <td colspan=2 width='80%'>Total</td><td width='20%'>[[total]]</td>
