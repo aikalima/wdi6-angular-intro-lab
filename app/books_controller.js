@@ -7,7 +7,7 @@ bookly.BooksController = function($scope) {
   $scope.books = books;
 
    $scope.addToCart = function(book, cart) {
-
+    // add book's title, author, and price
 
 
 

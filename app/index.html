@@ -17,18 +17,15 @@
 
     <h4>Search: <input ng-model="query"> </h4>
 
-   
-<!--     <div ng-repeat="book in books | filter:query | orderBy: orderProp">
-      </div>
-       <select ng-model="orderProp"> 
-        <option value="title">Title</option> 
-        <option value="author">Author</option> 
-        <option value="price">Price</option> 
-      </select>
-       -->
+    <select ng-model="orderProp"> 
+    <option value="title">Title</option> 
+    <option value="author">Author</option> 
+    <option value="price">Price</option> 
+    </select>
 
+   
+<div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books | filter:query | orderBy:orderProp">
       <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books | filter:query">
           <div class="col-xs-offset-1 book-title">
             {{book.title}}
           </div>
@@ -38,6 +35,7 @@
           <div>
             <img class="book-image" ng-src="{{book.img}}"/>
           </div>
+</div>
 
           <div class="cart-button">
             <span class="price">{{book.price | currency}}
@@ -51,7 +49,7 @@
             <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Price</th>
           </tr>
           <tr>
-            <td colspan=3>[[a row for each cart item]]</td>
+            <td colspan=3>($title, $author, $price)</td>
           </tr>
           <tr class="cart-total">
             <td colspan=2 width='80%'>Total</td><td width='20%'>[[total]]</td>
