@@ -7,5 +7,6 @@ bookly.BooksController = function($scope) {
   $scope.books = books;
 
   //Code to manage cart goes here
+  
 
 };

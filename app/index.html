@@ -11,8 +11,16 @@
 </head>
 
 <body>
+
+  <!-- Books -->
    <div ng-controller="bookly.BooksController" class="container">
-      <h4>[[ search box and 'order by' drop down go here]]</h4>
+      <h4><input type="text"/>
+        <select>
+          <option>Title</option>
+          <option>Author</option>
+          <option>Price</option>
+        </select>
+      </h4>
       <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books">
           <div class="col-xs-offset-1 book-title">
@@ -27,9 +35,11 @@
 
           <div class="cart-button">
             <span class="price">{{book.price | currency}}
-             [[Add]] <!-- Add to cart button  -->
+             <button ng-click="">Add</button> <!-- Add to cart button  -->
           </div>
         </div>
+
+        <!-- Cart -->
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
           <h3>your cart has [[item count]] items. </h3>
           <table class="carttable">
@@ -44,7 +54,7 @@
           </tr>
           </table>
           <div class="btn-group cart-button">
-            [[Empty cart button]]
+            <button ng-click="">Empty Cart</button>
             <button onclick="alert('Dunno how to check out ...');">Check Out</button>
           </div>
         </div>
