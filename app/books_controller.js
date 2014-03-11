@@ -6,26 +6,43 @@ bookly.BooksController = function($scope) {
   // load books. They are defined in data.js (we've got no back end yet!)
   $scope.books = books;
 
-  $scope.queryBy = function(selection){
-    console.log(selection);
-  };
+  // $scope.queryBy = function(selection){
+  //   console.log(selection);
+  // };
+  $scope.items = [];
+  $scope.total = 0;
+  $scope.totalItems = 0;
+
 
   $scope.add = function(index){
-    console.log(index);
-    $scope.items.push(books[index]);
-    // $scope.priceList.push(books[index].price);
-    
-  };
+    // // check if book is in cart
+    // // if so, find item in cart and increase count
+    // // elese create new cart_item with count 1 and push
+    // cart_item = {
+    //   book: books[index],
+    //   count: 1
+    // }
+    // $scope.items.push(cart_item);
 
-  $scope.total = function(){
-    var sum = 0;
-    for(var i=0; i<$scope.item.length; i++){
-      sum += $scope.item[i].price;
+    $scope.totalItems += 1;
+    books[index].count = books[index].count || 0;
+    if(books[index].count===0){
+      books[index].count = 1;
+      $scope.items.push(books[index]);
+    } else {
+      books[index].count += 1;
     }
-    return sum;
+    $scope.total += books[index].price;
+
   };
 
-  $scope.items = [];
+  $scope.clear = function(){
+    $scope.items = [];
+    $scope.total = 0;
+    $scope.totalItems = 0;
+
+  };
+  
   //Code to manage cart goes here
 
 
