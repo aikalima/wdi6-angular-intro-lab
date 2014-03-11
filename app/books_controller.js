@@ -14,11 +14,8 @@ bookly.BooksController = function($scope) {
   $scope.selects = ["author", "title", "price"];
   $scope.select = "title";
 
-  $scope.addToCart = function(index) {
-    var book = _.find(books, function(b) {
-      return b.id === index;
-    }); 
-
+  $scope.addToCart = function(book) {
+    
     if ($scope.cartBooks.indexOf(book) >= 0){
      book.quantity += 1;
      $scope.total += book.price;

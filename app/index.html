@@ -7,7 +7,7 @@
   <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"> </script>
   <link href="main.css" rel="stylesheet" type="text/css" />
   <script src ="data.js"></script>
-  <script src ="books_controller.js"></script>
+  <script src ="books_control.js"></script>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
 
           <div class="cart-button">
             <span class="price">{{book.price | currency}}
-             <button ng-click="addToCart(book.id)">Add</button>
+             <button ng-click="addToCart(book)">Add</button>
           
           </div>
         </div>
