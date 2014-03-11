@@ -12,9 +12,15 @@
 
 <body>
    <div ng-controller="bookly.BooksController" class="container">
-      <h4>[[ search box and 'order by' drop down go here]]</h4>
+      <h4>Filter: <input ng-model="query"> Or By 
+        <select ng-model="selected">
+          <option value='author'>Author</option>
+          <option value='title'>Title</option>
+          <option value='price'>Price</option>
+        </select>
+      </h4>
       <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books">
+        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books | filter:query| orderBy:selected">
           <div class="col-xs-offset-1 book-title">
             {{book.title}}
           </div>
@@ -27,24 +33,25 @@
 
           <div class="cart-button">
             <span class="price">{{book.price | currency}}
-             [[Add]] <!-- Add to cart button  -->
+             <!-- Add to cart button  -->
+             <button ng-click="add($index)">Add</button>
           </div>
         </div>
-        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
-          <h3>your cart has [[item count]] items. </h3>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart" >
+          <h3>your cart has {{cartCount}} items.</h3>
           <table class="carttable">
           <tr>
             <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Price</th>
           </tr>
-          <tr>
-            <td colspan=3>[[a row for each cart item]]</td>
+          <tr ng-repeat="item in cartItems">
+            <td width='40%'>{{item.title}}</td><td width='40%'>{{item.author}}</td><td width='20%'>{{item.price}}</td>
           </tr>
           <tr class="cart-total">
-            <td colspan=2 width='80%'>Total</td><td width='20%'>[[total]]</td>
+            <td colspan=2 width='80%'>Total</td><td width='20%'>{{total}}</td>
           </tr>
           </table>
           <div class="btn-group cart-button">
-            [[Empty cart button]]
+            <button ng-click='empty()'>Empty Cart</button>
             <button onclick="alert('Dunno how to check out ...');">Check Out</button>
           </div>
         </div>
