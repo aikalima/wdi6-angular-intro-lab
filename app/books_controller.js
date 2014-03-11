@@ -10,17 +10,22 @@ bookly.BooksController = function($scope) {
   $scope.cart = [];
 
   $scope.total = 0;
-  // $scope.cart_to_display = _.uniq($scope.cart);
+
+  //quantity is an array that stores the number of books in the chart by its place in the indes. for ex
+  //if book.id is four and there are 3 in the array, then quantity[4] is 3
+  $scope.quantity = [];
 
 
-  // code without quantity column
   $scope.add = function(book) {
     $scope.cart.push(book);
     $scope.cart = _.uniq($scope.cart);
-    if (($scope.cart.length === 1) || ($scope.in_cart(book) === false)) {
-      $scope.total += book.price;
+    $scope.total += book.price;
+    var id = book.id;
+    if ($scope.quantity[id] === undefined) {
+      $scope.quantity[id] = 1;
+    } else {
+      $scope.quantity[id] += 1;
     }
-    // $scope.cart_qty[book.id] += 1;
   };
 
 
@@ -34,22 +39,13 @@ bookly.BooksController = function($scope) {
     return num;
   };
 
-  $scope.in_cart = function(book) {
-    for (var ele in books) {
-      if (_.isEqual(ele, book)) {
-        return true;
-      }
-      return false;
-    }
-  };
-
-  // $scope.calculate_total = function(array) {
-  //   var a = 0;
-  //   for (var i = 0; i < $scope.cart.length; i++) {
-  //     var array = $scope.cart;
-  //     a += (array[i].price);
+  // $scope.in_cart = function(book) {
+  //   for (var ele in books) {
+  //     if (_.isEqual(ele, book)) {
+  //       return true;
+  //     }
+  //     return false;
   //   }
-  //   return a;
   // };
 
 
