@@ -8,7 +8,15 @@ bookly.BooksController = function($scope) {
   $scope.cart = [];
   $scope.addToCart = function(book){
     $scope.cart.push(book);
-  }
+  };
+
+  $scope.cartTotal = function(cart){
+    var total = 0;
+    _.each(cart, function(book){
+      total = total + book.price;
+    });
+    return total;
+  };
   //Code to manage cart goes here
 
 };
