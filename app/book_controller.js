@@ -16,17 +16,17 @@ bookly.BooksController = function($scope) {
     if (this.cartBooks.indexOf(book) >= 0) {
       book.quantity += 1;
       this.total += book.price;
-      this.count += 1;
+      $scope.count += 1;
     } else {
       book.quantity = 1;
       this.cartBooks.push(book);
       this.total += book.price;
-      this.count += 1;
+      $scope.count += 1;
     }
   };
   $scope.emptyCart = function() {
     this.cartBooks = [];
-    this.count = 0;
+    $scope.count = 0;
     this.total = 0;
   };
 };
