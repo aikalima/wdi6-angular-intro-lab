@@ -12,8 +12,13 @@ bookly.BooksController = function($scope) {
   $scope.pushToCart = function(index){
     var cart = $scope.cart;
     var books = $scope.books[index];
-    if (cart.indexOf(books) >= 0) {cart[cart.indexOf(books)].count += 1;} 
-    else {cart.push(books);  cart[cart.indexOf(books)].count = 1;}
+    if (cart.indexOf(books) >= 0) {
+      cart[cart.indexOf(books)].count += 1;
+    } 
+    else {
+      cart.push(books);
+      cart[cart.indexOf(books)].count = 1;
+    }
   };
 
   $scope.total = function() {
