@@ -13,6 +13,12 @@ bookly.BooksController = function($scope) {
     $scope.cartItems.push($scope.book)
     $scope.total += $scope.book.price
      
-  };
+  
+
+  $scope.empty = function() {
+    $scope.cartItems = [];
+    $scope.total = 0
+ };
+   };
 };
 
