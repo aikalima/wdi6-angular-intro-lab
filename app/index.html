@@ -35,11 +35,19 @@
           <div class="cart-button">
             <span class="price">{{book.price | currency}}
              <!-- [[Add]] Add to cart button  -->
-             <button ng-click="add($index)">Add</button>
+             <button ng-click="add()">Add</button>
           </div>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
-          <h3>your cart has {{totalItems}} items. </h3>
+          <h3> 
+              <div data-ng-pluralize count="totalItems"
+                when="{
+                '0' : 'Buy buy buy or it\'s bye bye bye!',
+                '1' : 'You ONLY have 1 item in the cart.',
+                'other' : 'You have {{totalItems}} items in the cart.'
+                }">
+              </div>
+          </h3>
           <table class="carttable">
           <tr>
             <th width='35%'>Title</th><th width='35%'>Author</th><th width='15%'>Price</th><th width='15%'>Count</th>

@@ -11,19 +11,17 @@ bookly.BooksController = function($scope) {
   $scope.totalItems = 0;
 
 
-  $scope.add = function(index){
+  $scope.add = function(){
 
     $scope.totalItems += 1;
-    books[index].count = books[index].count || 0;
-    if(books[index].count===0){
-      $scope.items.push(books[index]);
-      books[index].count = 1;
-    } else {
-      books[index].count += 1;
-    }
-    $scope.total += books[index].price;
-    // console.log($scope.items);
-    // console.log(books[index].count);
+    this.book.count = this.book.count || 0;
+    if(this.book.count===0){
+      $scope.items.push(this.book);
+    } 
+    this.book.count += 1;
+    $scope.total += this.book.price;
+    console.log("scope ", $scope);
+    console.log("this ", this);
 
   };
 
