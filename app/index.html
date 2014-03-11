@@ -37,20 +37,20 @@
 
           <div class="cart-button">
             <span class="price">{{book.price | currency}}
-             <button ng-click="addToCart($book)"> Add </button>
+             <button ng-click="addToCart(book)"> Add </button>
           </div>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
-          <h3>your cart has [[item count]] items. </h3>
+          <h3>your cart has {{itemCount}} items. </h3>
           <table class="carttable">
           <tr>
             <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Price</th>
           </tr>
           <tr>
-            <td "$title"</td><td "$book"</td><td "$price"</td>
+            <td> {{book.title}}</td><td> {{book.author}} </td><td> {{book.price}}</td>
           </tr>
           <tr class="cart-total">
-            <td colspan=2 width='80%'>Total</td><td width='20%'>[[total]]</td>
+            <td colspan=2 width='80%'>Total</td><td width='20%'>{{itemCount}}</td>
           </tr>
           </table>
           <div class="btn-group cart-button">
