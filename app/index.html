@@ -12,7 +12,7 @@
 
 <body>
    <div ng-controller="bookly.BooksController" class="container">
-      <h4>Search: <input type="text" ng-model="query"> <!-- <select ng-model="drop" > -->  </h4>
+      <h4>Search: <input type="text" ng-model="query"> <select ng-model="books" ng-options="b.author group by b.title for b in books" ></select> </h4>
       <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books|filter: query">
           <div class="col-xs-offset-1 book-title">
