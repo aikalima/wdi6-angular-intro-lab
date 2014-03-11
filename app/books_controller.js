@@ -22,14 +22,18 @@ bookly.BooksController = function($scope) {
       books[index].count += 1;
     }
     $scope.total += books[index].price;
+    // console.log($scope.items);
+    // console.log(books[index].count);
 
   };
 
   $scope.clear = function(){
+    for(var i=0; i<$scope.items.length; i++){
+      $scope.items[i].count = 0;
+    }
     $scope.items = [];
     $scope.total = 0;
     $scope.totalItems = 0;
-
   };
   
   //Code to manage cart goes here
