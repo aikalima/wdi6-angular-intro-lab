@@ -15,10 +15,10 @@
       Search: <input type="text" ng-model="query"/>
 
       Search by: <select ng-model="queryBy">
-          <option value="title">Title</option>
-          <option value="author">Author</option>
-          <option value="price">Price</option>
-      </select> 
+                    <option value="title">Title</option>
+                    <option value="author">Author</option>
+                    <option value="price">Price</option>
+                </select> 
 
       <div class="row">
         <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books | filter:query | orderBy:queryBy ">
@@ -29,7 +29,7 @@
             By: {{book.author}}
           </div>
           <div>
-            <!-- <img class="book-image" ng-src="{{book.img}}"/> -->
+            <img class="book-image" ng-src="{{book.img}}"/>
           </div>
 
           <div class="cart-button">
