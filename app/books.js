@@ -10,7 +10,7 @@ bookly.BooksController = function($scope) {
   $scope.itmes = [];
   $scope.total = 0;
   $scope.totalItems = 0;
-  return $scope.add = function() {
+  $scope.add = function() {
     $scope.totalItems += 1;
     this.book.count = this.book.count || 0;
     if (this.book.count === 0) {
@@ -19,4 +19,5 @@ bookly.BooksController = function($scope) {
     this.book.count += 1;
     return $scope.total += this.book.price;
   };
+  return $scope.clear = function() {};
 };
