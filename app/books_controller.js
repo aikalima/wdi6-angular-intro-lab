@@ -13,7 +13,7 @@ bookly.BooksController = function($scope) {
 
   //add a book to the shopping cart
   $scope.addItemsToCart = function(index) {
-    var addAnotherItem = $scope.books[index];    
+    var addAnotherItem = $scope.books[index]; 
      if($scope.cartItems.indexOf(addAnotherItem) >= 0){
        $scope.cartItems[$scope.cartItems.indexOf(addAnotherItem)].quantity += 1;
      } else {
@@ -24,7 +24,7 @@ bookly.BooksController = function($scope) {
    };
 
   $scope.removeItemFromCart = function(index){
-    $scope.cartItems.splice(index, -1);
+    $scope.cartItems.splice(index);
     $scope.count --;
   };
 
