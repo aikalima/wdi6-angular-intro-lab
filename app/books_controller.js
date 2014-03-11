@@ -52,6 +52,7 @@ bookly.BooksController = function($scope) {
   $scope.remove = function() {
     $scope.cart.splice(0, ($scope.cart.length));
     $scope.total = 0;
+    $scope.quantity = [];
   };
 
 
