@@ -13,15 +13,14 @@ bookly.BooksController = function($scope) {
     $scope.cart.push(addedBook);
     $scope.itemCount ++;
   };
-    
-   $scope.total = function(){
-    var total = 0;
 
-    for(count=0;count<$scope.books.itemCount;count++){
-    total += $scope.books[count].price*$scope.books[count].itemCount;
+  $scope.total = function() {
+    var total = 0.0;
+    angular.forEach($scope.cart, function(item, key){
+      total += item.price;
+    });
+    return total;
   }
- return total;
-    }
    
     $scope.emptyCart = function(index){
       $scope.cart = [];
@@ -29,3 +28,16 @@ bookly.BooksController = function($scope) {
     }
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
