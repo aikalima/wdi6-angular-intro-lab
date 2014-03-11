@@ -16,7 +16,8 @@ bookly.BooksController = function($scope) {
     
    $scope.total = function(){
     var total = 0;
-    for(count=0;count<$scope.books.length;count++){
+
+    for(count=0;count<$scope.books.itemCount;count++){
     total += $scope.books[count].price*$scope.books[count].itemCount;
   }
  return total;
