@@ -44,16 +44,19 @@
               <button ng-click="addToCart(book)">Add</button>
           </div>
         </div>
+
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
           <h3>your cart has {{cart.length}} items. </h3>
 
           <table class="carttable">
           <tr>
-            <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Price</th>
+            <th width='40%'>Title</th>
+            <th width='40%'>Author</th>
+            <th width='20%'>Price</th>
           </tr>
 
           <!-- Adds Items to Cart Display -->
-          <tr ng-repeat="item in items">
+          <tr ng-repeat="book in cart">
             <!-- a row for each cart item -->
             <td colspan="1" > {{book.title}} </td>
             <td colspan="1" > {{book.author}} </td>
@@ -61,7 +64,7 @@
           </tr>
 
           <tr class="cart-total">
-            <td colspan=2 width='80%'>Total</td><td width='20%'>[[total]]</td>
+            <td colspan=2 width='80%'>Total</td><td width='20%'>{{cart.total}}</td>
           </tr>
           </table>
           <div class="btn-group cart-button">
