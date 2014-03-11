@@ -10,11 +10,26 @@ bookly.BooksController = function($scope) {
 
   //Code to manage cart goes here
   $scope.add = function(index){
-    if($scope.checkout[$scope.books[index]]){
-      console.log('found');
-    } else { 
-    $scope.checkout.push($scope.books[index]);
+    var addedBook = $scope.books[index];
+    
+    if($scope.checkout.indexOf(addedBook) >= 0){
+      $scope.checkout[$scope.checkout.indexOf(addedBook)].quantity += 1;
+    } else {
+      addedBook.quantity = 1;
+      $scope.checkout.push(addedBook);
+    }
     $scope.itemCount++;
+  };
+
+  $scope.total = function(){
+    var moolah = 0;
+    _.each($scope.checkout, function(element, index){
+      moolah += element.price * element.quantity;
+    });
+    if(moolah === 0){
+      return;
+    }else {
+      return moolah.toPrecision(4);
     }
   };
 

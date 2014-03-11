@@ -1,6 +1,7 @@
 <html ng-app="bookApp">
 <head>
   <script src="http://code.jquery.com/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
   <link href="http://getbootstrap.com/dist/css/bootstrap.css" rel="stylesheet" type="text/css" />
   <script src="http://getbootstrap.com/dist/js/bootstrap.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.min.js"></script>
@@ -47,15 +48,16 @@
           </h3>
           <table class="carttable">
           <tr>
-            <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Price</th>
+            <th width='35%'>Title</th><th width='35%'>Author</th><th width='20%'>Price</th><th width='10%'>#</th>
           </tr>
           <tr ng-repeat="book in checkout track by $index">
             <td colspan=1>{{book.title}} </td>
             <td colspan=1 > {{book.author}}</td>
             <td colspan=1 >{{book.price}}</td>
+            <td colspan=1 >{{book.quantity}}</td>
           </tr>
           <tr class="cart-total">
-            <td colspan=2 width='80%'>Total</td><td width='20%'>{{total}}</td>
+            <td colspan=2 width='80%'>Total</td><td width='20%'>{{total()}}</td>
           </tr>
           </table>
           <div class="btn-group cart-button">
