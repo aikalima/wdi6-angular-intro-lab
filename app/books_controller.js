@@ -16,14 +16,14 @@ bookly.BooksController = function($scope) {
    $scope.total = function(){
     var total = 0;
     for(count=0;count<$scope.books.length;count++){
-    total += $scope.books[count].Price*$scope.books[count].itemCount;
+    total += $scope.books[count].price*$scope.books[count].itemCount;
   }
  return total;
     }
    
     $scope.emptyCart = function(index){
-      $scope.cart === [];
-      $scope.itemCount === 0;
+      $scope.cart = [];
+      $scope.itemCount = 0;
     }
 
 };
