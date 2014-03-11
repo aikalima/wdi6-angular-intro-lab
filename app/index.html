@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
-          <h3>your cart has {{count}} items. </h3>
+          <h3>your cart <ng-pluralize count="count" when="{'0': 'is empty', '1': 'has one item', 'other': 'has {{count}} items'}"></ng-pluralize> </h3>
           <table class="carttable">
           <tr>
             <th width='38%'>Title</th><th width='38%'>Author</th><th width='20%'>Price</th><th width='4%'>Qty</th>

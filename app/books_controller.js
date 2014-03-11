@@ -14,10 +14,10 @@ bookly.BooksController = function($scope) {
 
 
   //Code to manage cart goes here
-  $scope.addCart = function(index){
+  $scope.addCart = function(id){
 
     var book = _.find(books, function(b){
-      return b.id === index;
+      return b.id === id;
     });
 
     if ($scope.cartBooks.indexOf(book) >= 0){
