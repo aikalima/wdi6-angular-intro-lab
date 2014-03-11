@@ -37,7 +37,7 @@
 
           <div class="cart-button">
             <span class="price">{{book.price | currency}}
-             <button ng-click="addToCart(book)"> Add </button>
+             <button ng-click="addToCart($index)"> Add </button>
           </div>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
@@ -54,7 +54,7 @@
           </tr>
           </table>
           <div class="btn-group cart-button">
-            <button ng-click="removeBook($book)"> Remove </button>
+            <button ng-click="emptyCart()"> Empty Cart </button>
             <button onclick="alert('Dunno how to check out ...');">Check Out</button>
           </div>
         </div>
