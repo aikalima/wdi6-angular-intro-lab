@@ -12,13 +12,8 @@ bookly.BooksController = function($scope) {
   $scope.cartItems =[];
   $scope.total = 0;
   $scope.cartCount = 0;
-  //var total = 0;
 
-  $scope.add = function(index){
-    var book = _.find($scope.books, function(b) {
-      return b.id === index;
-    });
-    
+  $scope.add = function(book){
     if ($scope.cartItems.indexOf(book) === -1){
       book.quantity = 1;
       $scope.cartItems.push(book);
