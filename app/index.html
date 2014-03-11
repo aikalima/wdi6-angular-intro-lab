@@ -37,7 +37,12 @@
           </div>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
-          <h3>your cart has {{ cartItems.length }} items </h3>
+          <h3>  <ng-pluralize count="cartItems.length"
+                when="{'0': 'Your cart is empty',
+                       'one': 'You have 1 item in your cart.',
+                       'other': 'You have {} items in your cart'}">
+                </ng-pluralize><br>
+          </h3>
           <table class="carttable" ng-model="cartItems">
           <tr>
             <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Price</th>
@@ -45,7 +50,7 @@
           <tr ng-repeat="cartItem in cartItems">
             <td colspan=1>{{cartItem.title}}</td>
             <td colspan=1>{{cartItem.author}}</td>
-            <td colspan=1>{{cartItem.price}}</td>
+            <td colspan=1>{{cartItem.price | currency}}</td>
           </tr>
           <tr class="cart-total">
             <td colspan=2 width='80%'>Total</td><td width='20%'>{{total | currency}}</td>
