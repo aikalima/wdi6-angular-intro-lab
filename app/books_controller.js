@@ -25,6 +25,10 @@ bookly.BooksController = function($scope) {
     $scope.cart.splice(index,1);
   }
 
+  $scope.clearCart = function() {
+    $scope.cart = [];
+  }
+
   $scope.total = function() {
     var total = 0.0;
     for (var i = 0; i < $scope.cart.length; i++) {
@@ -41,8 +45,18 @@ bookly.BooksController = function($scope) {
     return quantity;
   };
 
-  $scope.clearCart = function() {
-    $scope.cart = [];
+  $scope.sortByCategory = function(category) {
+    function compare(a,b) {
+      if (a.category < b.category) {
+        return -1;
+      }
+      if (a.category > b.category) {
+        return 1
+      }
+      return 0;
+    }
+    return $scope.books.sort(compare);
   }
+
 
 };
