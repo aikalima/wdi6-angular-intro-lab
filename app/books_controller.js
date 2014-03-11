@@ -45,18 +45,5 @@ bookly.BooksController = function($scope) {
     return quantity;
   };
 
-  $scope.sortByCategory = function(category) {
-    function compare(a,b) {
-      if (a.category < b.category) {
-        return -1;
-      }
-      if (a.category > b.category) {
-        return 1
-      }
-      return 0;
-    }
-    return $scope.books.sort(compare);
-  }
-
 
 };
