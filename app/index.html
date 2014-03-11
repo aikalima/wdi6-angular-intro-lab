@@ -40,7 +40,7 @@
           </div>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
-          <h3>your cart has [[item count]] items. </h3>
+          <h3>your cart has {{ cart.length }} items. </h3>
           <table class="carttable">
           <tr>
             <th width='35%'>Title</th><th width='35%'>Author</th><th width="10%">Qty</th><th width='20%'>Price</th>
@@ -48,7 +48,7 @@
           <tr ng-repeat="book in cart">
             <td colspan=1>{{ book.title }}</td>
             <td colspan=1>{{ book.author }}</td>
-            <td> </td>
+            <td>{{ quantify(cart, book.id) }}</td>
             <td colspan=1>{{ book.price }}</td>
           </tr>
           <tr class="cart-total">
