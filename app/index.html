@@ -56,7 +56,7 @@
         </tr>
         <tr ng-repeat="book in cartItems track by $index">
           <td colspan=1>{{book.title}}</td><td colspan=1>{{book.author}}</td><td colspan=1>{{book.quantity}}</td><td colspan=1>{{book.price}}</td>
-          <td><button ng-click="removeItem($index)" />Remove</td>
+          <td><button ng-click="removeItemFromCart($quantity)" />Remove</td>
         </tr>
         <tr class="cart-total" ng-model="total">
           <td colspan=3 width='80%'>Total</td><td width='20%'>{{ total() | currency}}</td>

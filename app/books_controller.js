@@ -23,8 +23,9 @@ bookly.BooksController = function($scope) {
      $scope.count++;
    };
 
-  $scope.removeItem = function(index){
-    $scope.cartItems.splice(index,1);
+  $scope.removeItemFromCart = function(index){
+    $scope.cartItems.splice(index, -1);
+    $scope.count --;
   };
 
   //clear the entire cart
