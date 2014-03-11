@@ -23,14 +23,11 @@ bookly.BooksController = function($scope) {
 
   $scope.total = function(){
     var moolah = 0;
-    _.each($scope.checkout, function(element, index){
-      moolah += element.price * element.quantity;
-    });
-    if(moolah === 0){
-      return;
-    }else {
-      return moolah;
+
+    for(var i = 0; i < $scope.checkout.length; i++){
+      moolah += $scope.checkout[i].price * $scope.checkout[i].quantity;
     }
+    return moolah;
   };
 
   $scope.empty = function(){
