@@ -39,11 +39,8 @@ bookly.BooksController = function($scope) {
     _.each($scope.cartItems, function(item){
      total += item.quantity * item.price;
     });
-    if(total === 0){
-     return;
-    }else {
-     return total.toPrecision(4);
-    }
+     return total;
+
   };
 
 };
