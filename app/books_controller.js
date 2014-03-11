@@ -10,7 +10,7 @@ bookly.BooksController = function($scope) {
   $scope.select = 'title';
   $scope.cartBooks = [];
   $scope.orderTotal = 0;
-  $scope.cartItemCount = $scope.cartBooks.length;
+  $scope.cartItemCount = 0;
 
 
 
@@ -19,15 +19,24 @@ bookly.BooksController = function($scope) {
 		var book = _.find(books, function(b) {
 			return b.id === id;
 		});
-		$scope.cartBooks.push(book);
-		$scope.orderTotal += book.price;
-		$scope.cartItemCount = $scope.cartBooks.length;
+
+		if ($scope.cartBooks.indexOf(book) >= 0) {
+			$scope.cartBooks[$scope.cartBooks.indexOf(book)].quantity += 1;
+			$scope.orderTotal += book.price;
+			$scope.cartItemCount += 1;
+		}
+		else {
+			book.quantity += 1;
+			$scope.cartBooks.push(book);
+			$scope.orderTotal += book.price;
+			$scope.cartItemCount += 1;
+		}
 
 	};
 
 	$scope.emptyCart = function() {
 		$scope.cartBooks = [];
-		$scope.cartItemCount = $scope.cartBooks.length;
+		$scope.cartItemCount = 0;
 		$scope.orderTotal = 0;
 	};
 
