@@ -8,14 +8,10 @@ bookly.BooksController = function($scope) {
   $scope.cart = [];
   $scope.itemCount = 0;
 
-
-
    $scope.addToCart = function(book) {
-    var addedBook = $scope.books[index];
-    $scope.cart.push(addedBook);
+    $scope.cart.push(book);
     itemCount ++;
   };
-
     
    $scope.total = function(){
     var total = 0;
