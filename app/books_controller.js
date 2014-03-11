@@ -29,7 +29,7 @@ bookly.BooksController = function($scope) {
     if(moolah === 0){
       return;
     }else {
-      return moolah.toPrecision(4);
+      return moolah;
     }
   };
 
