@@ -51,8 +51,8 @@
             <td colspan=1 > {{book.author}}</td>
             <td colspan=1 >{{book.price}}</td>
           </tr>
-          <tr class="cart-total">
-            <td colspan=2 width='80%'>Total</td><td width='20%'>{{itemCount}}</td>
+          <tr class="cart-total" ng-repeat="books in cart track by book">
+            <td colspan=2 width='80%'>Total</td><td width='20%'>{{total}}</td>
           </tr>
           </table>
           <div class="btn-group cart-button">
