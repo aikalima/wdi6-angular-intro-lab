@@ -13,19 +13,15 @@
 
 <body>
    <div ng-controller="bookly.BooksController" class="container">
-
+   
+<!--SEARCH AND FILTER SECTION-->
     <hr>
-      <h4><p>Filter: <input ng-model="query" ng-model="selected"/>
-        Sort: 
-        <select>
-          <option ng-model="selected">Title</option>
-          <option ng-model="selected">Author</option>
-          <option ng-model="selected">Price</option>
-        </select></p></h4>
+      <h4><p>Filter: <input type="text" ng-model="query"/>Sort: <select ng-model="select" ng-options="o for o in options"></select></p></h4>
     <hr>
 
+<!-- THESE ARE THE DISPLAYED BOOKS-->
     <div class="row" ng-model="books">
-      <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books | filter:query">
+      <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books | filter:query | orderBy:select">
         <div class="col-xs-offset-1 book-title">
           {{book.title}}
         </div>
@@ -36,25 +32,34 @@
           <img class="book-image" ng-src="{{book.img}}"/>
         </div>
 
+<!-- ADD AN ITEM TO THE CART-->
         <div class="cart-button">
           <span class="price">{{book.price | currency}}
-           <button ng-click="addItemToCart(book)">Add</button>
+           <button ng-click="addItemsToCart($index)">Add</button>
         </div>
       </div>
 
+<!-- PLURALIZE STATEMENT WHEN MORE THAN ONE ITEM IN CART-->
       <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart" ng-model="cartCount">
-        <h3>your cart has {{ cart.length }} items. </h3>
+        <h3>
+          <ng-pluralize count="count"
+              when="{'0': 'You have no items in your cart',
+                    '1': 'You have 1 item in your cart.',
+                    'other': 'You have {} items in your cart.'}">
+          </ng-pluralize> 
+        </h3>
 
+<!-- TABLE FOR ITEMS ADDED TO CART-->
         <table class="carttable">
         <tr>
-          <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Price</th><th width='20%'>Remove from cart</th>
+          <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Quantity</th><th width='20%'>Price</th><th width='20%'>Remove</th>
         </tr>
-        <tr ng-repeat="book in cart.books">
-          <td colspan=1>{{book.title}}</td><td colspan=1>{{book.author}}</td><td colspan=1>{{book.price}}</td>
-          <td><button ng-click="removeBook($index)" />Remove</td>
+        <tr ng-repeat="book in cartItems track by $index">
+          <td colspan=1>{{book.title}}</td><td colspan=1>{{book.author}}</td><td colspan=1>{{book.quantity}}</td><td colspan=1>{{book.price}}</td>
+          <td><button ng-click="removeItem($index)" />Remove</td>
         </tr>
-        <tr class="cart-total">
-          <td colspan=2 width='80%'>Total</td><td width='20%'>{{ totalPrice() | currency}}</td>
+        <tr class="cart-total" ng-model="total">
+          <td colspan=3 width='80%'>Total</td><td width='20%'>{{ total() | currency}}</td>
         </tr>
         </table>
         <div class="btn-group cart-button">

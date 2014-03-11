@@ -5,62 +5,45 @@ bookly.bookApp = angular.module("bookApp", []);
 bookly.BooksController = function($scope) {
   // load books. They are defined in data.js (we've got no back end yet!)
   $scope.books = books;
-  $scope.cart = {
-        books: [{
-            qty: '1',
-            title: '',
-            author: '',
-            price: ''}]
-    };
+  $scope.options = ['author', 'title', 'price'];
+  $scope.cartItems = [];
   $scope.count = 0;
-  $scope.total = 0;
 
+ 
 
   //add a book to the shopping cart
-  $scope.addItemToCart = function(book) {
-    $scope.cart.books.push(book);
-    };
+  $scope.addItemsToCart = function(index) {
+    var addAnotherItem = $scope.books[index];    
+     if($scope.cartItems.indexOf(addAnotherItem) >= 0){
+       $scope.cartItems[$scope.cartItems.indexOf(addAnotherItem)].quantity += 1;
+     } else {
+      addAnotherItem.quantity = 1;
+       $scope.cartItems.push(addAnotherItem);
+     }
+     $scope.count++;
+   };
 
-  //total number of items in the cart
-  $scope.cartCount = function() {
-    var count = 0;
-    angular.forEach($scope.cart.books, function(book) {
-    count += book;
-    });
-    return count;
+  $scope.removeItem = function(index){
+    $scope.cartItems.splice(index,1);
   };
-
 
   //clear the entire cart
   $scope.clearCart = function() {
-    $scope.cart.books = [];
+    $scope.cartItems = [];
+    $scope.count = 0;
+
   };
 
-  //total price of all items in the cart
-  $scope.totalPrice = function(){
+  $scope.total = function(){
     var total = 0;
-    for(count=0; count < $scope.cart.length; count++){
-    total += $scope.cart.books.price;
+    _.each($scope.cartItems, function(item){
+     total += item.quantity * item.price;
+    });
+    if(total === 0){
+     return;
+    }else {
+     return total.toPrecision(4);
     }
- return total;
-    };
-
-
+  };
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
