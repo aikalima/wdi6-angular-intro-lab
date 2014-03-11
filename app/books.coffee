@@ -18,5 +18,13 @@ bookly.BooksController = ($scope) ->
     $scope.total += @book.price
 
   $scope.clear = () ->
+    item for item in $scope.items
+    item.count = 0
+
+    $scope.items = []
+    $scope.total = 0
+    $scope.totalItems = 0
+
+
 
 
