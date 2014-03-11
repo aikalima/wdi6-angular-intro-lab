@@ -46,11 +46,11 @@
           <tr>
             <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Price</th>
           </tr>
- <tr ng-repeat="book in checkout track by $index">
+ <tr ng-repeat="book in cart track by $index">
             <td colspan=1>{{book.title}} </td>
             <td colspan=1 > {{book.author}}</td>
             <td colspan=1 >{{book.price}}</td>
-            <td colspan=1 >{{book.quantity}}</td>
+            <td colspan=1 >{{book.itemCount}}</td>
           </tr>
           <tr class="cart-total">
             <td colspan=2 width='80%'>Total</td><td width='20%'>{{itemCount}}</td>
