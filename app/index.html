@@ -48,7 +48,7 @@
          
           <table class="carttable">
           <tr>
-            <th width='40%'>Title</th><th width='30%'>Author</th><th width='10%'>Qty</th><th width='20%'>Price</th>
+            <th width='30%'>Title</th><th width='25%'>Author</th><th width='10%'>Qty</th><th width='20%'> Unit Price</th><th width='20%'> Price</th>
           </tr>
           <tr  colspan=4 ng-repeat='item in cart'>
     
@@ -56,10 +56,11 @@
             <td> {{item.author}}</td>
             <td>{{quantity[item.id]}}</td>
             <td> {{item.price}}</td>
+            <td>{{ quantity[item.id] * item.price | currency}}</td>
         
           </tr>
           <tr class="cart-total">
-            <td colspan=3 width='80%'>Total</td><td width='20%'>{{ total | currency }}</td>
+            <td colspan=4 width='80%'>Total</td><td width='20%'>{{ total | currency }}</td>
 
           </tr>
           </table>
