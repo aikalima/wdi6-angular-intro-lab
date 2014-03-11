@@ -40,11 +40,12 @@
       </div>
 
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart" >
-          <h3>  <ng-pluralize count="cart.length"
+          <h3>  <div data-ng-pluralize count="num_books_in_cart"
                 when="{'0': 'No item in the cart',
                        'one': 'You have 1 item in the cart',
                        'other': 'You have {} items in are the cart'}">
-  </ng-pluralize><br>
+
+                </div><br>
          
           <table class="carttable">
           <tr>

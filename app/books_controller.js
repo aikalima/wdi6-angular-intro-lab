@@ -10,13 +10,16 @@ bookly.BooksController = function($scope) {
   $scope.cart = [];
 
   $scope.total = 0;
+  $scope.num_items = 0;
 
   //quantity is an array that stores the number of books in the chart by its place in the indes. for ex
   //if book.id is four and there are 3 in the array, then quantity[4] is 3
   $scope.quantity = [];
+  $scope.num_books_in_cart = 0;
 
 
   $scope.add = function(book) {
+    $scope.num_books_in_cart += 1;
     $scope.cart.push(book);
     $scope.cart = _.uniq($scope.cart);
     $scope.total += book.price;
