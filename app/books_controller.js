@@ -12,21 +12,16 @@ bookly.BooksController = function($scope) {
 
    $scope.addToCart = function(book) {
     var addedBook = $scope.books[index];
-    if($scope.cart.indexOf(addedBook) >= 0){
- $scope.cart[$scope.cart.indexOf(addedBook)].quantity += 1;
- } else {
-  addedBook.quantity = 1;
     $scope.cart.push(addedBook);
-  }
-  $scope.itemCount++;
+    itemCount ++;
   };
-};
+
     
    $scope.total = function(){
-        var total = 0;
- for(count=0;count<$scope.books.length;count++){
-     total += $scope.books[count].Price*$scope.books[count].Quantity;
- }
+    var total = 0;
+    for(count=0;count<$scope.books.length;count++){
+    total += $scope.books[count].Price*$scope.books[count].Quantity;
+  }
  return total;
     }
    
@@ -36,3 +31,4 @@ bookly.BooksController = function($scope) {
     }
 // // }
 
+};
