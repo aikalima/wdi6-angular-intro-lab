@@ -17,3 +17,13 @@ bookly.BooksController = ($scope) ->
     $scope.cartCount += 1
     this
     
+  $scope.checkout (books) -> 
+    $scope.cart.splice books
+    return 
+  
+  $scope.removeAll (books) -> 
+    $scope.cart.splice books
+    $scope.total = 0
+    $scope.cartCount = 0
+    book.count=0 for books in $scope.books
+    
