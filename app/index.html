@@ -7,21 +7,23 @@
 
   <link href="main.css" rel="stylesheet" type="text/css" />
   <script src ="data.js"></script>
-  <script src ="books_controller.js"></script>
+  <script src ="new_controller.js"></script>
 </head>
 
 <body>
-   <div ng-controller="bookly.BooksController" class="container">
-    <!--[[ search box and 'order by' drop down go here]] -->
-      <h4>Search <input type="text" ng-model="query">
-          <select ng-model="location">
-          <option value="title";
-            ng-click="location = 'title'; reverse=false">By Title</option>
-          <option value="author"; "location = 'author'; reverse=false">By Author</option>
-          </select> 
-      </h4>
+   <div ng-controller="bookly.NewController" class="container">
+      <div class="filter">
+        Filter:
+          <input ng-model="query">
+        Sort:
+          <select ng-model="orderProperty">
+            <option value="title">Title</option>
+            <option value="author">Author</option>
+            <option value="price">Price</option>
+          </select>
+      </div>
       <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books | orderBy:location | filter:query">
+        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books | filter:query | orderBy:orderProperty">
           <div class="col-xs-offset-1 book-title">
             {{book.title}}
           </div>
@@ -33,29 +35,29 @@
           </div>
 
           <div class="cart-button">
-            <span class="price">{{book.price | currency}}
-              <!-- Add to cart button  -->
-              <button ng-click="add(book)"> Add </button>
+            <span class="price">{{book.price | currency}}</span> <button ng-click="addToCart(book)">Add</button>
           </div>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
-          <h3>your cart has {{ cart.length }} items. </h3>
-          <table class="carttable">
+          <h4>your cart <ng-pluralize count="cart.length"
+                           when="{'0': 'is empty.',
+                                  'one': 'has one measly item.',
+                                  'other': 'has {} items.'}">
+                        </ng-pluralize>
+          </h4>
+    <table class="carttable">
           <tr>
             <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Price</th>
           </tr>
-          <tr ng-repeat="book in cart">
-            <td colspan=1> {{ book.title}}</td>
-            <td colspan=1> {{ book.author}}</td>
-            <td colspan=1> {{ book.price}}</td>
+          <tr ng-repeat="item in cart">
+            <td width='40%'>{{item.title}}</td><td width='40%'>{{item.author}}</td><td width='20%'>{{item.price | currency}}</td>
           </tr>
           <tr class="cart-total">
-            <td colspan=3 width='80%'>Total</td><td width='20%'>{{ updateCart(cart) }}</td>
+            <td colspan=2 width='80%'>Total</td><td width='20%'>{{cartTotal() | currency}}</td>
           </tr>
           </table>
           <div class="btn-group cart-button">
-        <!--     [[Empty cart button]] -->
-            <button ng-click="emptyCart(cart)">Empty Cart</button>
+            <button ng-click="clearCart()">Clear</button>
             <button onclick="alert('Dunno how to check out ...');">Check Out</button>
           </div>
         </div>

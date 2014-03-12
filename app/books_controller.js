@@ -2,35 +2,30 @@ var bookly = bookly || {};
 
 bookly.bookApp = angular.module("bookApp", []);
 
-bookly.BooksController = function($scope) {
+bookly.NewController = function($scope) {
   // load books. They are defined in data.js (we've got no back end yet!)
   $scope.books = books;
+  $scope.orderProperty = 'title';
+
   $scope.cart = [];
 
-  //Code to manage cart goes here
-  // $scope.delete = function(aBook) {
-  //   var index = $scope.books.indexOf(aBook);
-  //   $scope.books.splice(index,1);
-  // }
-
-  $scope.add = function(book){
-    $scope.cart.push(book);
+  $scope.addToCart = function(aBook) {
+    //Add book only if not already in cart
+    if ($scope.cart.indexOf(aBook) === -1){
+      $scope.cart.push(aBook);
+    }
   }
 
-  $scope.updateCart = function(cart){
-    var total = 0;
-    _.each(cart, function(book){
-      total = total + book.price;
-    });
-    return total;
-  };
-
-  $scope.emptyCart = function(cart){
+  $scope.clearCart = function() {
     $scope.cart = [];
   }
 
-  $scope.count = function(cart, book_id){
-    return _.where(cart, {id: book_id}).length;
+  $scope.cartTotal = function() {
+    var total = 0.0;
+    angular.forEach($scope.cart, function(item, key){
+      total += item.price;
+    });
+    return total;
   }
 
 };
