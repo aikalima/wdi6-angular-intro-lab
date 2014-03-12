@@ -13,14 +13,14 @@ bookly.BooksController = ($scope) ->
     @book.count = @book.count or 0
     if @book.count is 0
       $scope.items.push @book
-
     @book.count += 1
     $scope.total += @book.price
+    this
+
 
   $scope.clear = () ->
-    item for item in $scope.items
+    item=0 for items in $scope.items
     item.count = 0
-
     $scope.items = []
     $scope.total = 0
     $scope.totalItems = 0

@@ -17,14 +17,15 @@ bookly.BooksController = function($scope) {
       $scope.items.push(this.book);
     }
     this.book.count += 1;
-    return $scope.total += this.book.price;
+    $scope.total += this.book.price;
+    return this;
   };
   return $scope.clear = function() {
-    var item, _i, _len, _ref;
+    var item, items, _i, _len, _ref;
     _ref = $scope.items;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-      item = _ref[_i];
-      item;
+      items = _ref[_i];
+      item = 0;
     }
     item.count = 0;
     $scope.items = [];
