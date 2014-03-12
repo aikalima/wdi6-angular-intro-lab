@@ -1,3 +1,4 @@
+<!-- important to declare the HTML as angular -->
 <html ng-app="bookApp">
 <head>
   <script src="http://code.jquery.com/jquery.min.js"></script>
@@ -12,10 +13,21 @@
 
 <body>
    <div ng-controller="bookly.BooksController" class="container">
-      <h4>[[ search box and 'order by' drop down go here]]</h4>
+      <h4>Search: <input ng-model="query"></h4>
+      <h4>Sort by:</h4>
+        <select ng-model="orderProp">
+          <option value="title">title</option>
+          <option value="author">author</option>
+          <option value="price">price</option>
+        </select>
       <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books">
+        <!-- ng-repeat="book in books" is like an .each loop -->
+        <!-- book is bound to its context(div) -->
+
+        <div class="col-xs-4 col-sm-4 col-md-3 col-lg-2 book" ng-repeat="book in books | filter:query | orderBy:orderProp">
           <div class="col-xs-offset-1 book-title">
+          <!-- book is just a placeholder, like i -->
+          <!-- {{}} calls the "instance variable"  -->
             {{book.title}}
           </div>
           <div class="col-xs-offset-1 book-author">
@@ -26,26 +38,29 @@
           </div>
 
           <div class="cart-button">
+          <!-- | currency is a filter that adds currency sign -->
             <span class="price">{{book.price | currency}}
-             [[Add]] <!-- Add to cart button  -->
+            <button ng-click="addToCart(book)" >add
+            </button>
           </div>
         </div>
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 cart">
-          <h3>your cart has [[item count]] items. </h3>
+          <h3>your cart has {{count}} items. </h3>
           <table class="carttable">
           <tr>
             <th width='40%'>Title</th><th width='40%'>Author</th><th width='20%'>Price</th>
           </tr>
-          <tr>
-            <td colspan=3>[[a row for each cart item]]</td>
-          </tr>
+          <div ng-model="booksArray">
+            <tr ng-repeat="bookInfo in booksArray">
+              <td width='40%'>{{bookInfo.title}}</td><td width='40%'>{{bookInfo.author}}</td><td width='20%'>{{bookInfo.price}}</td>
+            </tr>
+          </div>  
           <tr class="cart-total">
-            <td colspan=2 width='80%'>Total</td><td width='20%'>[[total]]</td>
+            <td colspan=2 width='80%'>Total</td><td width='20%'>{{total}}</td>
           </tr>
           </table>
           <div class="btn-group cart-button">
-            [[Empty cart button]]
-            <button onclick="alert('Dunno how to check out ...');">Check Out</button>
+            <button ng-click="checkout()" >Check Out</button>
           </div>
         </div>
       </div>
