@@ -8,14 +8,37 @@ bookly.BooksController = function($scope) {
   
   $scope.books = books;
 
-  var count = 0;
+  var count = 1;
 
   $scope.addToCart = function (aBook) {
+    // increments
     $scope.count = count++;
-    $scope.author = aBook.author;
-    $scope.title = aBook.title;
-    $scope.price = aBook.price;
+
+    // adds books to array
+    $scope.booksArray = $scope.booksArray || [];
+    $scope.booksArray.push(aBook);
+
+    // calculates total
+    var total = 0;  
+    for (var i = 0; i < booksArray.length; i++) {
+      v = parseFloat(booksArray[i].price);
+      total +=v;
+      $scope.total = total;
+    }
   };
+
+  $scope.checkout = function () {
+   $scope.booksArray = [];
+   $scope.count = null;
+   count = 1; 
+   $scope.total = null;
+   total = null;
+  };
+
+
+
+
+
 };
 
 // modules are like large functions
