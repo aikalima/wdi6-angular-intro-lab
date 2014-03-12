@@ -8,25 +8,21 @@ bookly.bookApp = angular.module("bookApp", []);
 bookly.BooksController = function($scope) {
   $scope.books = books;
   $scope.cartBooks = [];
-  $scope.total = 0;
-  $scope.count = 0;
+  $scope.total = $scope.count = 0;
   $scope.selects = ['author', 'title', 'price'];
   $scope.select = "title";
   $scope.addCart = function(book) {
-    if (this.cartBooks.indexOf(book) >= 0) {
+    if ($scope.cartBooks.indexOf(book) >= 0) {
       book.quantity += 1;
-      this.total += book.price;
-      $scope.count += 1;
     } else {
       book.quantity = 1;
-      this.cartBooks.push(book);
-      this.total += book.price;
-      $scope.count += 1;
+      $scope.cartBooks.push(book);
     }
+    $scope.total += book.price;
+    $scope.count += 1;
   };
   $scope.emptyCart = function() {
-    this.cartBooks = [];
-    $scope.count = 0;
-    this.total = 0;
+    $scope.cartBooks = [];
+    $scope.count = $scope.total = 0;
   };
 };
