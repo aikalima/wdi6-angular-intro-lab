@@ -1,6 +1,6 @@
 bookly = bookly or {}
 
-bookly.bookApp = angular.module("bookApp",[])
+bookly.bookApp = angular.module "bookApp",[]
 
 bookly.BooksController = ($scope) ->
   $scope.books = books
@@ -15,7 +15,7 @@ bookly.BooksController = ($scope) ->
       $scope.items.push @book
     @book.count += 1
     $scope.total += @book.price
-    this
+    return
 
 
   $scope.clear = () ->
@@ -24,7 +24,8 @@ bookly.BooksController = ($scope) ->
     $scope.items = []
     $scope.total = 0
     $scope.totalItems = 0
-
+    return
+  return
 
 
 

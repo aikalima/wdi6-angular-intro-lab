@@ -18,9 +18,8 @@ bookly.BooksController = function($scope) {
     }
     this.book.count += 1;
     $scope.total += this.book.price;
-    return this;
   };
-  return $scope.clear = function() {
+  $scope.clear = function() {
     var item, items, _i, _len, _ref;
     _ref = $scope.items;
     for (_i = 0, _len = _ref.length; _i < _len; _i++) {
@@ -30,6 +29,6 @@ bookly.BooksController = function($scope) {
     item.count = 0;
     $scope.items = [];
     $scope.total = 0;
-    return $scope.totalItems = 0;
+    $scope.totalItems = 0;
   };
 };
