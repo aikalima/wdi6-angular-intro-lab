@@ -10,22 +10,22 @@ bookly.BooksController = function($scope) {
 
   
   $scope.cartItems =[];
-  $scope.total = 0;
   $scope.cartCount = 0;
 
   $scope.add = function(book){
     if ($scope.cartItems.indexOf(book) === -1){
       book.quantity = 1;
       $scope.cartItems.push(book);
+      console.log(book);
       // total += $scope.books[index].price;
       // $scope.total = total.toFixed(2);
-      $scope.total += book.price;
-      $scope.cartCount += 1;
+      // $scope.total += book.price;
     } else {
       book.quantity += 1;
-      $scope.total += book.price;
-      $scope.cartCount += 1;
+      console.log(book);
+      // $scope.total += book.price;
     }
+    $scope.cartCount += 1;
   };
 
   $scope.empty = function(){
@@ -36,10 +36,19 @@ bookly.BooksController = function($scope) {
 
   $scope.removeItem = function(index){
     $scope.cartItems.splice(index, 1);
-    $scope.total -= (index.price * index.quantity);
+    // $scope.total -= (index.price * index.quantity);
     $scope.cartCount -= index.quantity;
     console.log($scope.cartCount);
     index.quantity = 0;
     console.log(index.quantity);
+  };
+
+  $scope.total = function(){
+    var total = 0;
+    _.each($scope.cartItems, function(item){
+      total += item.quantity * item.price;
+    });
+    console.log(total);
+    return total;
   };
 };
